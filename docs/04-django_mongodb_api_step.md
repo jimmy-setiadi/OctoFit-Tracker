@@ -41,6 +41,30 @@ This step implemented the full backend integration for the OctoFit Tracker app u
 feat: Django MongoDB integration, REST API, and test data population
 ```
 
+
+---
+
+# Step: Django Codespace URL and Launch Configuration (2025-11-18)
+
+## Overview
+Configured the Django backend for GitHub Codespace compatibility, including dynamic REST API URLs, allowed hosts, and VS Code launch settings.
+
+## Actions performed
+
+- Updated `octofit-tracker/backend/octofit_tracker/urls.py`:
+  - REST API endpoints now use the `$CODESPACE_NAME` environment variable for the base URL, ensuring correct endpoint URLs in Codespaces.
+- Updated `octofit-tracker/backend/octofit_tracker/settings.py`:
+  - `ALLOWED_HOSTS` now dynamically includes both the Codespace URL (using `$CODESPACE_NAME`) and localhost.
+- Updated `.vscode/launch.json`:
+  - Added/updated a launch configuration for running the Django server on port 8000, passing the `CODESPACE_NAME` environment variable.
+- Tested API endpoints using curl for both the Codespace URL and localhost (requires server to be running).
+- Staged, committed, and pushed all changes to the `build-octofit-app` branch.
+
+## Commit message
+```
+Update Django URLs and settings for Codespace compatibility and launch config
+```
+
 ## Next steps
 - Open a Pull Request from `build-octofit-app` to `main` for review and merge.
 - Continue with frontend or further backend features as needed.
